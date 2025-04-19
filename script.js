@@ -25,11 +25,7 @@ features.forEach((feature, i) => {
 
     div.innerHTML = `
         <div class="feature-text ${textAlignClass}">
-<<<<<<< HEAD
-            <h3>${feature.title}</h3>
-=======
             <h2>${feature.title}</h2>
->>>>>>> ff035c0 (Refactor landing page structure and update content to reflect IoweU branding)
             <p>${feature.description}</p>
         </div>
     `;
@@ -44,11 +40,7 @@ teamMembers.forEach(member => {
     div.className = "team-member";
     div.innerHTML = `
         <img src="${member.photo}" alt="${member.name}" />
-<<<<<<< HEAD
-        <h4>${member.name}</h4>
-=======
         <h3>${member.name}</h3>
->>>>>>> ff035c0 (Refactor landing page structure and update content to reflect IoweU branding)
         <p>${member.role}</p>
     `;
     teamContainer.appendChild(div);
