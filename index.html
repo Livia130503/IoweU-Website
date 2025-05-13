@@ -9,8 +9,10 @@
 	<body>
 		<header class="main-header">
 			<div class="toolbar">
-				<h1 class="title">IoweU</h1>
-				<nav class="nav-links">
+				<a href="#" class="logo">
+					<img src="assets/Logo.svg" alt="IoweU Logo" />
+				</a>				
+				<nav class="nav-links" role="navigation" aria-label="Hauptnavigation">
 					<a href="#introduction">Home</a>
 					<a href="#features">Features</a>
 					<a href="#team">Team</a>
@@ -26,27 +28,37 @@
 		<main class="landingpage-content">
 			<section id="introduction" class="hero">
 				<div class="hero-text">
-					<h1>Deine Ausgaben im Griff</h1>
-					<p>Organisiere Gruppen-Ausgaben einfach und schnell.</p>
+					<h1><img src="assets/Logo_lang.svg" alt="IoweU Logo" /><br>
+					Deine Ausgaben im Griff</h1>
+					<p>Organisiere Gruppen-Ausgaben einfach, gerecht & transparent – egal ob WG oder Weltreise.</p>
+					<ul class="mvp-highlights">
+						<li>✓ Gruppen einfach erstellen & verwalten</li>
+						<li>✓ Gerecht aufteilen: Prozentual oder anteilig</li>
+						<li>✓ Vorlagen für Reisen & WGs</li>
+					</ul>
 				</div>
 				<div id="phone-container-hero" class="phone-container phone-position-left">
-					<div class="phone-frame" id="phone-frame-hero">
+					<div class="phone-shell">
+						<div class="phone-frame" id="phone-frame-hero">
 						<div class="phone-screen" id="hero-phone-screen">
-							<img id="screen-img-hero" alt="App-Screen" />
+							<img id="screen-img-hero" class="phone-image" src="assets/Startbildschirm-gruppenübersicht.png"  alt="App-Screen" />
+						</div>
 						</div>
 					</div>
-				</div>
+					</div>
 			</section>
 
 			<div class="features-container" id="features">
 				<h2 class="feature-titel">App-Features</h2>
 
 				<div id="phone-container" class="phone-container phone-position-left">
-					<div class="phone-frame">
-						<div class="phone-screen">
-							<img id="screen-img" alt="App-Screen" />
-						</div>
-					</div>
+  					<div class="phone-shell">
+    					<div class="phone-frame">
+      						<div class="phone-screen">
+        						<img id="screen-img" class="phone-image" alt="App-Screen" />
+      						</div>
+    					</div>
+  					</div>
 				</div>
 
 				<div class="features-list" id="features-list">
@@ -80,7 +92,7 @@
 			<footer>
 				<div class="footer-container">
 					<div class="footer-links">
-						<a href="#">Über uns</a>
+						<!-- <a href="#">Über uns</a> -->
 						<a href="#">Kontakt</a>
 						<a href="#">Impressum</a>
 						<a href="#">Datenschutz</a>

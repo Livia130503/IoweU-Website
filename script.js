@@ -35,6 +35,19 @@ const teamMembers = [
     { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: 'assets/Sophie.jpg' }
 ];
 
+// Team rendern
+const teamContainer = document.getElementById("team-container");
+teamMembers.forEach(member => {
+    const div = document.createElement("div");
+    div.className = "team-member";
+    div.innerHTML = `
+        <img src="${member.photo}" alt="${member.name}" />
+        <h3>${member.name}</h3>
+        <p>${member.role}</p>
+    `;
+    teamContainer.appendChild(div);
+});
+
 // Features rendern
 const featuresList = document.getElementById("features-list");
 features.forEach((feature, i) => {
@@ -53,48 +66,60 @@ features.forEach((feature, i) => {
     featuresList.appendChild(div);
 });
 
-// Team rendern
-const teamContainer = document.getElementById("team-container");
-teamMembers.forEach(member => {
-    const div = document.createElement("div");
-    div.className = "team-member";
-    div.innerHTML = `
-        <img src="${member.photo}" alt="${member.name}" />
-        <h3>${member.name}</h3>
-        <p>${member.role}</p>
-    `;
-    teamContainer.appendChild(div);
-});
+
 
 // Bild und Handy Container
 const phoneContainer = document.getElementById('phone-container');
 const screenImg = document.getElementById('screen-img');
 screenImg.src = 'assets/features/feature1.png';  // Setze das Bild von Anfang an
 
-function updateImage(index) {
-    const screenImg = document.getElementById('screen-img');
-    if (!screenImg) return;  // Sicherstellen, dass screenImg existiert
-    screenImg.src = `assets/features/feature${index + 1}.png`;  // Dynamisches Setzen des Bildes basierend auf dem Index
-}
-
-// Funktion zum Aktualisieren der Handy-Position (nur horizontale Bewegung)
+// Funktion zum Aktualisieren der Handy-Position und Rotation
 function updatePhonePosition(index, progress) {
-    const phone = document.getElementById('phone-frame');
     const phoneContainer = document.getElementById('phone-container');
-    if (!phone || !phoneContainer) return;
+    if (!phoneContainer) return;
 
     const isEven = index % 2 === 0;
 
     // Ausgangs- und Endpositionen für das Handy
-    const startX = isEven ? -200 : 200;
-    const endX = isEven ? 200 : -200;
+    const startX = isEven ? -200 : 200; // Startposition (außerhalb des Bildschirms)
+    const endX = 0; // Endposition (zentriert neben dem Text)
 
-    // Position des Handys berechnen
-    let translateX = startX + (endX - startX) * progress;
+    // Berechnung der Position basierend auf dem Fortschritt
+    const translateX = startX + (endX - startX) * progress;
 
-    // Update der transform-Eigenschaften für den Container
-    phoneContainer.style.transition = 'transform 0.2s ease';
+    // Update der transform-Eigenschaften
     phoneContainer.style.transform = `translateX(${translateX}px)`;
+    phoneContainer.style.opacity = progress; // Sichtbarkeit basierend auf dem Fortschritt
+}
+
+// Funktion zum Aktualisieren des Bildes und Flip-Effekt
+function updateImage(index) {
+    const screenImg = document.getElementById('screen-img');
+    const phoneFrame = document.querySelector('.phone-frame');
+    const phoneContainer = document.getElementById('phone-container');
+
+    if (!screenImg || !phoneFrame || !phoneContainer) return;
+
+    // Flip starten
+    phoneFrame.classList.add('flip');
+
+    // Nach 250ms (halb geklappt): Bild wechseln
+    setTimeout(() => {
+        screenImg.src = `assets/features/feature${index + 1}.png`;
+    }, 250);
+
+    // Nach 500ms (Flip zu Ende): Flip zurücknehmen + Seite wechseln
+    setTimeout(() => {
+        phoneFrame.classList.remove('flip');
+
+        // Seite aktualisieren (nach der Animation!)
+        phoneContainer.classList.remove('phone-position-left', 'phone-position-right');
+        if (index % 2 === 0) {
+            phoneContainer.classList.add('phone-position-right');
+        } else {
+            phoneContainer.classList.add('phone-position-left');
+        }
+    }, 500);
 }
 
 // Scrollama Setup
@@ -104,31 +129,38 @@ scroller
     .setup({
         step: '.step',
         offset: 0.5,
-        debug: false
+        debug: true
     })
     .onStepEnter(({ element, index }) => {
-        const i = parseInt(index);
-
-        // Bild aktualisieren, wenn das entsprechende Feature aktiv ist
-        updateImage(i);
+        // Bild aktualisieren
+        updateImage(index);
 
         // Handy-Position ändern
+        const phoneContainer = document.getElementById('phone-container');
         phoneContainer.classList.remove('phone-position-left', 'phone-position-right');
-        if (i % 2 === 0) {
+        if (index % 2 === 0) {
             phoneContainer.classList.add('phone-position-right');
         } else {
             phoneContainer.classList.add('phone-position-left');
         }
 
         // Aktive Klasse setzen
-        element.classList.add("is-active");
+        element.classList.add('is-active');
+
+        // Index in der Konsole ausgeben
+        console.log(`Aktueller Index: ${index}`);
     })
     .onStepExit(({ element }) => {
-        element.classList.remove("is-active");
+        // Aktive Klasse entfernen
+        element.classList.remove('is-active');
     })
     .onStepProgress(({ index, progress }) => {
-        updatePhonePosition(index, progress);  // Position des Handys aktualisieren
+        // Handy-Position und Rotation aktualisieren
+        updatePhonePosition(index, progress);
+
+        // Fortschritt in der Konsole ausgeben
+        console.log(`Index: ${index}, Fortschritt: ${progress}`);
     });
 
 // Resize Event zum Anpassen der Scrollama-Positionen
-window.addEventListener("resize", scroller.resize);
+window.addEventListener('resize', scroller.resize);
