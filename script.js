@@ -1,5 +1,3 @@
-
-
 const features = [
     {
         title: 'Gruppen erstellen',
@@ -51,15 +49,14 @@ teamMembers.forEach(member => {
 });
 
 // Features rendern
-const featuresList = document.getElementById("features-list");
+const featuresList = document.getElementById('features-list');
 features.forEach((feature, i) => {
-    const textAlignClass = i % 2 === 0 ? "text-left" : "text-right";
-    const div = document.createElement("div");
-    div.className = "feature-item step";
+    const div = document.createElement('div');
+    div.className = 'feature-item step';
     div.dataset.index = i;
 
     div.innerHTML = `
-        <div class="feature-text ${textAlignClass}">
+        <div class="feature-text ${i % 2 === 0 ? 'text-left' : 'text-right'}">
             <h2>${feature.title}</h2>
             <p>${feature.description}</p>
         </div>
@@ -67,8 +64,6 @@ features.forEach((feature, i) => {
 
     featuresList.appendChild(div);
 });
-
-
 
 // Bild und Handy Container
 const phoneContainer = document.getElementById('phone-container');
@@ -150,20 +145,6 @@ scroller
         // Aktive Klasse setzen
         element.classList.add('is-active');
 
-        // Index in der Konsole ausgeben
+        // Debugging: Index ausgeben
         console.log(`Aktueller Index: ${index}`);
-    })
-    .onStepExit(({ element }) => {
-        // Aktive Klasse entfernen
-        element.classList.remove('is-active');
-    })
-    .onStepProgress(({ index, progress }) => {
-        // Handy-Position und Rotation aktualisieren
-        updatePhonePosition(index, progress);
-
-        // Fortschritt in der Konsole ausgeben
-        console.log(`Index: ${index}, Fortschritt: ${progress}`);
     });
-
-// Resize Event zum Anpassen der Scrollama-Positionen
-window.addEventListener('resize', scroller.resize);

@@ -245,7 +245,6 @@ p {
 .phone-container {
     position: sticky;
     top: 30%; /* Positioniert das Handy relativ zum Viewport */
-    transform: translateY(-50%); /* Verschiebt das Handy um die Hälfte seiner Höhe nach oben */
     height: 500px;
     z-index: 10;
     transition: transform 0.5s ease, opacity 0.5s ease; /* Sanfte Übergänge */
