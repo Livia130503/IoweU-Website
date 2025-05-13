@@ -1,3 +1,19 @@
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDybxy3EbqWz29usNOGOBqBeRVFAaXY3EU",
+  authDomain: "ioweu-landing.firebaseapp.com",
+  projectId: "ioweu-landing",
+  storageBucket: "ioweu-landing.firebasestorage.app",
+  messagingSenderId: "432758041786",
+  appId: "1:432758041786:web:3964ba3665bdcf65abe683",
+  measurementId: "G-3MHN7V0HFG"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 const features = [
     {
         title: 'Gruppen erstellen',
