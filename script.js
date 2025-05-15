@@ -175,6 +175,10 @@ menuToggle.addEventListener('click', () => {
     const isVisible = mobileMenu.style.display === 'flex';
     mobileMenu.style.display = isVisible ? 'none' : 'flex';
 });
+document.getElementById('menuToggle').addEventListener('click', function () {
+  var menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open'); // `open` muss in CSS definiert sein
+});
 
 document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
