@@ -1,1 +1,4 @@
 node_modules
+dist/**
+.firebase/hosting.ZGlzdA.cache
+dist/index.html

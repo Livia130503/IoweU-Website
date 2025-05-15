@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="de">
 	<head>
+		<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js"></script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>IoweU Landingpage</title>
-		<link rel="stylesheet" crossorigin href="/assets/index-9W23SR3l.css">
+		<title>IoweU Landingpage</title>
+		<link rel="stylesheet" crossorigin href="/assets/index-Dm5q2S8l.css">
 	</head>
 	<body>
 		<header class="main-header">
 			<div class="toolbar">
-				<h1 class="title">IoweU</h1>
-				<nav class="nav-links">
+				<a href="#" class="logo">
+					<img src="data:image/svg+xml,%3csvg%20width='135'%20height='138'%20viewBox='0%200%20135%20138'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_277_36)'%3e%3cpath%20d='M0%200.252319H24.8358V137.638H0V0.252319Z'%20fill='%23231F20'/%3e%3cpath%20d='M44.5896%2093.2983V36.8798H65.8872V92.4266C65.8872%20107.758%2075.7388%20118.608%2089.6478%20118.608C103.557%20118.608%20113.266%20107.758%20113.266%2092.4266V36.8798H134.711V93.2983C134.711%20119.48%20116.018%20138%2089.6478%20138C63.2773%20138%2044.585%20119.484%2044.585%2093.2983H44.5896Z'%20fill='%23231F20'/%3e%3cpath%20d='M44.3916%2013.8775C44.3916%206.32173%2050.7235%200%2058.1903%200C65.6571%200%2071.9338%206.32173%2071.9338%2013.8775C71.9338%2021.4333%2065.6525%2027.8055%2058.1903%2027.8055C50.7281%2027.8055%2044.3916%2021.4333%2044.3916%2013.8775ZM70.082%2013.8775C70.082%207.34936%2064.6232%201.84881%2058.1903%201.84881C51.7573%201.84881%2046.248%207.34936%2046.248%2013.8775C46.248%2020.4057%2051.7068%2025.9567%2058.1903%2025.9567C64.6738%2025.9567%2070.082%2020.4562%2070.082%2013.8775Z'%20fill='%23231F20'/%3e%3cpath%20d='M72.0898%200.614738H73.9968L81.9782%2024.7181L89.9505%200.614738H91.5449L99.5264%2024.7181L107.508%200.614738H109.415L100.661%2027.1862H98.3455L90.727%204.05545L83.1086%2027.1862H80.7927L72.0898%200.614738Z'%20fill='%23231F20'/%3e%3cpath%20d='M132.169%2022.305L133.456%2023.6904C131.241%2026.1081%20126.609%2027.8009%20122.336%2027.8009C115.232%2027.8009%20109.259%2021.4287%20109.259%2013.8225C109.259%206.21622%20115.025%200%20122.336%200C129.647%200%20135%205.90885%20135%2014.7492H111.166C111.579%2020.9149%20116.569%2025.9521%20122.336%2025.9521C126.145%2025.9521%20129.955%2024.7181%20132.169%2022.305ZM111.166%2012.9004H133.148C132.84%206.27127%20128.617%201.84881%20122.336%201.84881C116.055%201.84881%20111.575%206.67957%20111.166%2012.9004Z'%20fill='%23231F20'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_277_36'%3e%3crect%20width='135'%20height='138'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="IoweU Logo" />
+				</a>	
+				<!-- Burger-Menü-Button -->
+				<button class="menu-toggle" role="navigation" id="menuToggle">☰</button>
+				<!-- Mobile Navigation (nur für kleine Bildschirme sichtbar) -->
+				<nav class="mobile-menu" id="mobileMenu">
+    				<a href="#introduction">Home</a>
+					<a href="#features">Features</a>
+					<a href="#team">Team</a>
+					<a href="#cta">Download</a>
+					<a href="https://app.ioweu.eu/login" target="_blank" class="user-info">
+						<div class="profile-placeholder"></div>
+						<span class="member-name">Login</span>
+    				</a>
+				</nav>			
+				<!-- Desktop Navigation (nur für große Bildschirme sichtbar) -->
+				<nav class="nav-links" role="navigation" aria-label="Hauptnavigation">
 					<a href="#introduction">Home</a>
 					<a href="#features">Features</a>
 					<a href="#team">Team</a>
@@ -26,27 +44,37 @@
 		<main class="landingpage-content">
 			<section id="introduction" class="hero">
 				<div class="hero-text">
-					<h1>Deine Ausgaben im Griff</h1>
-					<p>Organisiere Gruppen-Ausgaben einfach und schnell.</p>
+					<h1><img src="data:image/svg+xml,%3csvg%20width='126'%20height='27'%20viewBox='0%200%20126%2027'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_173_2)'%3e%3cpath%20d='M0%200.11179H5.84545V27H0V0.11179Z'%20fill='%23231F20'/%3e%3cpath%20d='M101.808%2015.0896V0.0585575H107.526V14.8585C107.526%2018.9437%20110.171%2021.8353%20113.904%2021.8353C117.637%2021.8353%20120.244%2018.9447%20120.244%2014.8585V0.0585575H126V15.0896C126%2022.0663%20120.983%2026.9989%20113.904%2026.9989C106.825%2026.9989%20101.808%2022.0653%20101.808%2015.0896Z'%20fill='%23231F20'/%3e%3cpath%20d='M10.0312%2013.4744C10.0312%206.13888%2016.2259%200%2023.5281%200C30.8304%200%2036.9745%206.13888%2036.9745%2013.4744C36.9745%2020.81%2030.8304%2026.9989%2023.5281%2026.9989C16.2259%2026.9989%2010.0312%2020.81%2010.0312%2013.4744ZM35.161%2013.4744C35.161%207.13647%2029.8226%201.7961%2023.5281%201.7961C17.2336%201.7961%2011.8447%207.13647%2011.8447%2013.4744C11.8447%2019.8124%2017.1831%2025.2028%2023.5281%2025.2028C29.8731%2025.2028%2035.161%2019.8625%2035.161%2013.4744Z'%20fill='%23231F20'/%3e%3cpath%20d='M36.6221%200.598343H38.485L46.2911%2024.0051L54.0961%200.598343H55.6571L63.4632%2024.0051L71.2693%200.598343H73.1322L64.5709%2026.4006H62.3051L54.8524%203.94247L47.3987%2026.4006H45.1329L36.6221%200.598343Z'%20fill='%23231F20'/%3e%3cpath%20d='M94.8382%2021.6596L96.0974%2023.0075C93.9315%2025.353%2089.4%2027%2085.2197%2027C78.2699%2027%2072.4287%2020.8111%2072.4287%2013.4255C72.4287%206.03987%2078.069%200%2085.2197%200C92.3705%200%2097.6079%205.73963%2097.6079%2014.323H74.2916C74.6945%2020.3118%2079.5795%2025.2028%2085.2197%2025.2028C88.9466%2025.2028%2092.6735%2024.0051%2094.8382%2021.6596ZM74.2916%2012.5269H95.7955C95.4936%206.08884%2091.3638%201.79716%2085.2197%201.79716C79.0756%201.79716%2074.6945%206.48809%2074.2916%2012.5269Z'%20fill='%23231F20'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_173_2'%3e%3crect%20width='126'%20height='27'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="IoweU Logo" /><br>
+					Deine Ausgaben im Griff</h1>
+					<p>Organisiere Gruppen-Ausgaben einfach, gerecht & transparent – egal ob WG oder Weltreise.</p>
+					<ul class="mvp-highlights">
+						<li>✓ Gruppen einfach erstellen & verwalten</li>
+						<li>✓ Gerecht aufteilen: Prozentual oder anteilig</li>
+						<li>✓ Vorlagen für Reisen & WGs</li>
+					</ul>
 				</div>
 				<div id="phone-container-hero" class="phone-container phone-position-left">
-					<div class="phone-frame" id="phone-frame-hero">
+					<div class="phone-shell">
+						<div class="phone-frame" id="phone-frame-hero">
 						<div class="phone-screen" id="hero-phone-screen">
-							<img id="screen-img-hero" alt="App-Screen" />
+							<img id="screen-img-hero" class="phone-image" src="/assets/Startbildschirm-gruppen%C3%BCbersicht-D_-4Ln2m.png"  alt="App-Screen" />
+						</div>
 						</div>
 					</div>
-				</div>
+					</div>
 			</section>
 
 			<div class="features-container" id="features">
 				<h2 class="feature-titel">App-Features</h2>
 
 				<div id="phone-container" class="phone-container phone-position-left">
-					<div class="phone-frame">
-						<div class="phone-screen">
-							<img id="screen-img" alt="App-Screen" />
-						</div>
-					</div>
+  					<div class="phone-shell">
+    					<div class="phone-frame">
+      						<div class="phone-screen">
+        						<img id="screen-img" class="phone-image" alt="App-Screen" />
+      						</div>
+    					</div>
+  					</div>
 				</div>
 
 				<div class="features-list" id="features-list">
@@ -80,7 +108,7 @@
 			<footer>
 				<div class="footer-container">
 					<div class="footer-links">
-						<a href="#">Über uns</a>
+						<!-- <a href="#">Über uns</a> -->
 						<a href="#">Kontakt</a>
 						<a href="#">Impressum</a>
 						<a href="#">Datenschutz</a>
