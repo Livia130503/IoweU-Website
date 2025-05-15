@@ -5,14 +5,14 @@ const features = [
     },
     {
         title: 'Abrechnungslisten verwalten',
-        description: 'Verwalte Ausgaben innerhalb von Gruppen und erstelle detaillierte Abrechnungslisten, die aufzeigen, wer was bezahlt hat und wer noch was schuldet. Die App ermöglicht es dir, Ausgaben nach Kategorien zu ordnen und zu verfolgen, ob alle Rechnungen beglichen wurden oder ob noch offene Posten bestehen. Eine effiziente Möglichkeit, finanzielle Transaktionen in Gruppen übersichtlich und transparent zu gestalten.'
+        description: 'Verwalte Ausgaben innerhalb von Gruppen und erstelle detaillierte Abrechnungslisten, die aufzeigen, wer was bezahlt hat und wer jemanden noch etwas schuldet. Die App ermöglicht es dir, Ausgaben nach Kategorien zu ordnen und zu verfolgen, ob alle Rechnungen beglichen wurden oder ob noch offene Posten bestehen. Eine effiziente Möglichkeit, finanzielle Transaktionen in Gruppen übersichtlich und transparent zu gestalten.'
     },
     {
         title: 'Vorhandene Templates',
-        description: 'Nutze vorgefertigte Templates für verschiedene Szenarien wie Reisen, WGs oder regelmäßige Ausgaben. Diese Templates enthalten bereits vordefinierte Kategorien und Einstellungen, sodass du schnell starten kannst, ohne jede Transaktion und jeden Detail von Grund auf neu erstellen zu müssen. Du kannst die Templates an deine Bedürfnisse anpassen und sie für zukünftige Projekte wiederverwenden.'
+        description: 'Nutze vorgefertigte Templates für verschiedene Szenarien wie Reisen, WGs oder regelmäßige Ausgaben. Diese Templates enthalten bereits vordefinierte Kategorien und Einstellungen, sodass du schnell starten kannst. Du kannst die Templates an deine Bedürfnisse anpassen und sie für zukünftige Projekte wiederverwenden.'
     },
     {
-        title: 'Schuldner & Abrechnungsarten',
+        title: 'Schulden & Abrechnungsarten',
         description: 'Das Feature bietet dir verschiedene Abrechnungsarten, um die Ausgaben gerecht zu teilen. Du kannst zwischen prozentualer oder anteiliger Abrechnung wählen, abhängig davon, wie du die Kosten aufteilen möchtest. Ob du gleichmäßig oder nach bestimmten Anteilen teilen willst – mit dieser Funktion kannst du für jede Situation die passende Methode auswählen. Außerdem behältst du immer den Überblick darüber, wer noch Geld schuldet und wer bereits bezahlt hat.'
     },
     {
@@ -142,9 +142,51 @@ scroller
             phoneContainer.classList.add('phone-position-left');
         }
 
+        // Handy nur ab dem ersten Feature einblenden
+        if (index === 0) {
+            phoneContainer.style.opacity = '1';
+            phoneContainer.style.pointerEvents = 'auto';
+        }
+
+
         // Aktive Klasse setzen
         element.classList.add('is-active');
 
         // Debugging: Index ausgeben
         console.log(`Aktueller Index: ${index}`);
+    })
+
+        .onStepExit(({ element, index, direction }) => {
+        // Handy ausblenden, wenn man über das erste Feature nach oben raus scrollt
+        if (index === 0 && direction === 'up') {
+            const phoneContainer = document.getElementById('phone-container');
+            phoneContainer.style.opacity = '0';
+            phoneContainer.style.pointerEvents = 'none';
+        }
+        element.classList.remove('is-active');
     });
+
+
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+// Menü öffnen/schließen
+menuToggle.addEventListener('click', () => {
+    const isVisible = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = isVisible ? 'none' : 'flex';
+});
+
+document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Menü schließen
+        mobileMenu.style.display = 'none';
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});

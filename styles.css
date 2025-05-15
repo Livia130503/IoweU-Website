@@ -4,6 +4,7 @@
 }
 body, html {
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
@@ -11,6 +12,7 @@ body, html {
     color: var(--ion-color-dark);
     scroll-behavior: smooth;
 }
+
 a {
     text-decoration: none;
     color: inherit;
@@ -79,6 +81,11 @@ p {
 .title {
     margin: 0 20px;
     font-size: 1.5rem;
+    white-space: normal;      /* Zeilenumbruch erlauben */
+    word-break: break-word;   /* Lange Wörter umbrechen */
+    overflow-wrap: break-word;
+    max-width: 100%;          /* Nicht über das Elternelement hinaus */
+    box-sizing: border-box;
 }
 .nav-links {
     margin-left: auto;
@@ -175,15 +182,13 @@ p {
 }
 
 #phone-container-hero {
-    position: absolute;
-    top: 40%;
-    left: 75%;
-    transform: translate(-50%, -50%) rotateY(-20deg) rotateX(45deg) rotateZ(10deg);
-    width: 300px;
-    height: 600px;
-    z-index: 5;
-    perspective: 1000px;
+    position: relative;
+    margin-top: 0%;
+    margin-right: 20%;
+    top: auto;
+    transform: rotateY(-20deg) rotateX(45deg) rotateZ(10deg);
 }
+
 
 #hero-phone-frame {
     width: 100%;
@@ -223,9 +228,10 @@ p {
 }
 .features-container {
     max-width: 1200px;
-    width: 50%;
+    width: 60%;
     margin: 10% auto;
     position: relative;
+    padding-top: 100px; /* Passe den Wert so an, dass das Handy erst mit dem ersten Feature sichtbar wird */
 }
 
 .features-container .feature-titel{
@@ -244,7 +250,7 @@ p {
 /* === Phone === */
 .phone-container {
     position: sticky;
-    top: 30%; /* Positioniert das Handy relativ zum Viewport */
+    top: 20%; /* Positioniert das Handy relativ zum Viewport */
     height: 500px;
     z-index: 10;
     transition: transform 0.5s ease, opacity 0.5s ease; /* Sanfte Übergänge */
@@ -304,7 +310,7 @@ p {
 .feature-text {
     display: block;
     width: auto;
-    max-width: 50%;
+    max-width: 55%;
     padding: 30px;
     opacity: 0.3;
     border: 1px solid #ffffff;
@@ -314,6 +320,9 @@ p {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    
 }
 
 .feature-text h2 {
@@ -357,32 +366,112 @@ p {
 .phone-position-left .phone-screen img {
     transform: rotateY(0deg); /* Keine Spiegelung */
 }
+/* Burger-Menü Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #000;
+    margin-left: auto;
+    z-index: 1001;
+}
 
+/* Mobile Navigation */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.mobile-menu a {
+    margin: 10px 0;
+    font-weight: 500;
+    color: #1d1d1f;
+}
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 786px) {
+    .main-header {
+        padding: 10px 10px;
+    }
+    .toolbar {
+        padding-left: 0;
+    }
+    .logo {
+        margin: 0;
+    }
+    .logo img {
+        height: 70px;
+        width: auto;
+        padding: 15px;
+        margin: 0;
+    }
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        /* ...weitere Styles... */
+    }
+    .menu-toggle {
+        display: block;
+    }
+    #phone-container-hero {
+    position: relative;
+    margin-top: 0%;
+    margin-left: 15%;
+    transform: rotateY(-20deg) rotateX(45deg) rotateZ(10deg);
+}
+    #phone-container {
+        display: none;
+    }
+   
+    .title {
+        max-width: 200px;
+        width: 100%;
+        word-break: break-word;
+    }
     .hero-text h1 {
         font-size: 2rem;
     }
-
     .phone-frame {
         width: 180px;
         height: 360px;
     }
 
+    .features-container {
+        width: 95%;
+        align-items: center;
+    }
+
     .feature-item {
+        align-items: center;
         flex-direction: column;
         text-align: center;
+        margin-top: 10%;
     }
 
     .feature-text {
-        max-width: 200px;
-        width: 100%;
+        max-width: 90%;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
+ 
 
     .feature-text.text-left,
     .feature-text.text-right {
         text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
+
 
     .nav-links {
         display: none;
@@ -491,3 +580,5 @@ copyright {
 .step.is-active {
     opacity: 1 !important;
 }
+
+
