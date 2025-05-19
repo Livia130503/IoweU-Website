@@ -127,7 +127,7 @@ scroller
     .setup({
         step: '.step',
         offset: 0.5,
-        debug: true
+        debug: false
     })
     .onStepEnter(({ element, index }) => {
         // Bild aktualisieren
@@ -184,3 +184,17 @@ mobileMenu.querySelectorAll('a').forEach(link => {
         mobileMenu.style.display = 'none';
     });
 });
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDybxy3EbqWz29usNOGOBqBeRVFAaXY3EU",
+    authDomain: "ioweu-landing.firebaseapp.com",
+    projectId: "ioweu-landing",
+    storageBucket: "ioweu-landing.firebasestorage.app",
+    messagingSenderId: "432758041786",
+    appId: "1:432758041786:web:3964ba3665bdcf65abe683",
+    measurementId: "G-3MHN7V0HFG"
+  };
+  
+  // Firebase initialisieren
+  const app = firebase.initializeApp(firebaseConfig);
+const analytics = firebase.analytics();
