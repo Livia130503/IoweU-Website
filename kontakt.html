@@ -50,7 +50,7 @@
             <footer>
 				<div class="footer-container">
 					<div class="footer-links">
-						<!-- <a href="#">Über uns</a> -->
+						<!-- <a href="#">\u00dcber uns</a> -->
 						<a href="kontakt.html">Kontakt</a>
 						<a href="impressum.html">Impressum</a>
 						<a href="datenschutz.html">Datenschutz</a>
@@ -63,7 +63,35 @@
 			</footer>
 	</div>
 		<script src="https://unpkg.com/scrollama"></script>
-		<script src="script.js"></script>
+		<script>
+		document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuToggle && mobileMenu) {
+        // Toggle Menü bei Klick auf den Button
+        menuToggle.addEventListener('click', (event) => {
+          event.stopPropagation(); // Klick nicht weiterreichen
+          mobileMenu.classList.toggle('visible');
+        });
+
+        // Schließen bei Klick auf einen Link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+          mobileMenu.classList.remove('visible');
+          });
+        });
+
+        // Schließen bei Klick außerhalb des Menüs
+        document.addEventListener('click', (event) => {
+          const clickedOutside = !mobileMenu.contains(event.target) && !menuToggle.contains(event.target);
+          if (clickedOutside) {
+          mobileMenu.classList.remove('visible');
+          }
+        });
+        }
+		});
+    </script>
 	</body>
 </html>
 

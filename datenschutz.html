@@ -43,7 +43,6 @@
     <h1>Datenschutz</h1>
     <p>Auf dieser Landingpage werden keine personenbezogenen Daten erhoben.</p>
     <p>Der Login und die Datenverarbeitung finden ausschließlich in der IoweU App statt.</p>
-    <p>Für weitere Informationen besuche bitte die Datenschutzerklärung in der App oder kontaktiere uns.</p>
   </main>
 
             <footer>
@@ -62,8 +61,36 @@
 			</footer>
 </div>	
 
-		<script src="https://unpkg.com/scrollama"></script>
-		<script src="script.js"></script>
+	<script src="https://unpkg.com/scrollama"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const menuToggle = document.getElementById('menuToggle');
+			const mobileMenu = document.getElementById('mobileMenu');
+
+			if (menuToggle && mobileMenu) {
+			// Toggle Menü bei Klick auf den Button
+			menuToggle.addEventListener('click', (event) => {
+				event.stopPropagation(); // Klick nicht weiterreichen
+				mobileMenu.classList.toggle('visible');
+			});
+
+			// Schließen bei Klick auf einen Link
+			mobileMenu.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+				mobileMenu.classList.remove('visible');
+				});
+			});
+
+			// Schließen bei Klick außerhalb des Menüs
+			document.addEventListener('click', (event) => {
+				const clickedOutside = !mobileMenu.contains(event.target) && !menuToggle.contains(event.target);
+				if (clickedOutside) {
+				mobileMenu.classList.remove('visible');
+				}
+			});
+			}
+		});
+    </script>
 	</body>
 </html>
 

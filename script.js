@@ -168,22 +168,34 @@ scroller
 
 
 
-//Mobile Menü
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
+// Burger-Menü Funktionalität immer aktivieren
+        document.addEventListener('DOMContentLoaded', () => {
+		const menuToggle = document.getElementById('menuToggle');
+		const mobileMenu = document.getElementById('mobileMenu');
 
-// Menü öffnen/schließen
-menuToggle.addEventListener('click', () => {
-    const isVisible = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = isVisible ? 'none' : 'flex';
-});
+			if (menuToggle && mobileMenu) {
+			// Toggle Menü bei Klick auf den Button
+			menuToggle.addEventListener('click', (event) => {
+				event.stopPropagation(); // Klick nicht weiterreichen
+				mobileMenu.classList.toggle('visible');
+			});
 
-// Menü schließen, wenn ein Link geklickt wird
-mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.style.display = 'none';
-    });
-});
+			// Schließen bei Klick auf einen Link
+			mobileMenu.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+				mobileMenu.classList.remove('visible');
+				});
+			});
+
+			// Schließen bei Klick außerhalb des Menüs
+			document.addEventListener('click', (event) => {
+				const clickedOutside = !mobileMenu.contains(event.target) && !menuToggle.contains(event.target);
+				if (clickedOutside) {
+				mobileMenu.classList.remove('visible');
+				}
+			});
+			}
+		});
 
 const firebaseConfig = {
     apiKey: "AIzaSyDybxy3EbqWz29usNOGOBqBeRVFAaXY3EU",
