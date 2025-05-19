@@ -282,23 +282,30 @@ p {
 .phone-frame {
     width: 250px;
     height: 500px;
-    background-color: #000;
+    background-color: #000; /* Rahmenfarbe */
     border-radius: 30px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
+.phone-screen {
+    width: 90%;         /* kleiner als frame */
+    height: 95%;        /* damit ein sichtbarer Rand bleibt */
+    border-radius: 20px;
+    overflow: hidden;
+}
+
 .phone-screen img {
     width: 100%;
-    height: auto;
-    border: #1d1d1f solid 10px;
-    border-radius: 30px;
-
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
+
 
 /* === Scroll Steps === */
 .feature-item {
@@ -492,20 +499,18 @@ p {
         flex-direction: column;
         display: flex;
     }
-.content-container {
-    margin-top: 90%; /* zentriert & nicht zu viel Abstand oben/unten */
-    margin-bottom: 80%;
-    margin-right: 10%;
-    max-width: 600px;
-    width: 90%;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    color: #222;
-    flex: 1;
-}
+    .content-container {
+        margin: 8rem auto; /* gibt oben UND unten moderaten Abstand */
+        max-width: 600px;
+        width: 90%;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(5px);
+        border-radius: 1rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        color: #222;
+    }
+
 
 
 
@@ -635,8 +640,6 @@ body.impressum {
   background-color: #f5f5f7;
   font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
   color: var(--ion-color-dark);
-  margin: 0;
-  padding: 0;
 }
 
 .landingpage-impressum p {
@@ -644,12 +647,6 @@ body.impressum {
     text-align: left;
 }
 
-footer {
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-  padding: 1.5rem 2rem;
-  text-align: center;
-}
 
 
 /* Datenschutz */
@@ -660,14 +657,22 @@ body.datenschutz {
   background-color: #f5f5f7;
   font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
   color: var(--ion-color-dark);
-  margin: 0;
-  padding-top: 5%;
+}
+
+/* Kontakt */
+body.kontakt {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f7;
+  font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
+  color: var(--ion-color-dark);
+  
 }
 
 .content-container {
-    margin-top: 10%; /* zentriert & nicht zu viel Abstand oben/unten */
-    margin-bottom: 20%;
-    margin-left: 10%;
+    margin: 10% auto;
+    margin-left: 6%;
     max-width: 600px;
     width: 90%;
     padding: 2rem;
@@ -679,14 +684,15 @@ body.datenschutz {
     flex: 1;
 }
 
-/* Kontakt */
-body.kontakt {
-  min-height: 100vh;
+.page-wrapper {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f7;
-  font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
-  color: var(--ion-color-dark);
-  margin: 0;
-  padding-top: 5%;
+}
+
+footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 1.5rem 2rem;
+  text-align: center;
 }

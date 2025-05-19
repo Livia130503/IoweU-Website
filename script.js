@@ -167,6 +167,8 @@ scroller
     });
 
 
+
+//Mobile Menü
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 
@@ -175,22 +177,10 @@ menuToggle.addEventListener('click', () => {
     const isVisible = mobileMenu.style.display === 'flex';
     mobileMenu.style.display = isVisible ? 'none' : 'flex';
 });
-document.getElementById('menuToggle').addEventListener('click', function () {
-  var menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('open'); // `open` muss in CSS definiert sein
-});
 
-document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        // Menü schließen
+// Menü schließen, wenn ein Link geklickt wird
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
         mobileMenu.style.display = 'none';
-
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
     });
 });
