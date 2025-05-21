@@ -167,33 +167,35 @@ scroller
     });
 
 
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
 
-// Menü öffnen/schließen
-menuToggle.addEventListener('click', () => {
-    const isVisible = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = isVisible ? 'none' : 'flex';
-});
-document.getElementById('menuToggle').addEventListener('click', function () {
-  var menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('open'); // `open` muss in CSS definiert sein
-});
+// Burger-Menü Funktionalität immer aktivieren
+        document.addEventListener('DOMContentLoaded', () => {
+		const menuToggle = document.getElementById('menuToggle');
+		const mobileMenu = document.getElementById('mobileMenu');
 
-document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
+			if (menuToggle && mobileMenu) {
+			// Toggle Menü bei Klick auf den Button
+			menuToggle.addEventListener('click', (event) => {
+				event.stopPropagation(); // Klick nicht weiterreichen
+				mobileMenu.classList.toggle('visible');
+			});
 
-        // Menü schließen
-        mobileMenu.style.display = 'none';
+			// Schließen bei Klick auf einen Link
+			mobileMenu.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+				mobileMenu.classList.remove('visible');
+				});
+			});
 
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
+			// Schließen bei Klick außerhalb des Menüs
+			document.addEventListener('click', (event) => {
+				const clickedOutside = !mobileMenu.contains(event.target) && !menuToggle.contains(event.target);
+				if (clickedOutside) {
+				mobileMenu.classList.remove('visible');
+				}
+			});
+			}
+		});
 
 const firebaseConfig = {
     apiKey: "AIzaSyDybxy3EbqWz29usNOGOBqBeRVFAaXY3EU",

@@ -151,6 +151,7 @@ p {
 
 .hero-text {
     max-width: 600px;
+    margin-left: 7%;
     padding: 2rem;
     z-index: 2;
     background: rgba(255, 255, 255, 0.85);
@@ -163,6 +164,7 @@ p {
 
 .hero-text img {
     margin-bottom: 2rem;
+    margin-right: 10%;
 }
 
 .hero-text h1 {
@@ -185,7 +187,7 @@ p {
 #phone-container-hero {
     position: relative;
     margin-top: 0%;
-    margin-right: 20%;
+    margin-right: 25%;
     top: auto;
     transform: rotateY(-20deg) rotateX(45deg) rotateZ(10deg);
 }
@@ -281,24 +283,31 @@ p {
 
 .phone-frame {
     width: 250px;
-    height: 500px;
-    background-color: #000;
+    height: 510px;
+    background-color: #000; /* Rahmenfarbe */
     border-radius: 30px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
+.phone-screen {
+    width: 90%;         /* kleiner als frame */
+    height: 95%;        /* damit ein sichtbarer Rand bleibt */
+    border-radius: 20px;
+    overflow: hidden;
+}
+
 .phone-screen img {
     width: 100%;
-    height: auto;
-    border: #1d1d1f solid 10px;
-    border-radius: 30px;
-
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    display: block;
 }
+
 
 /* === Scroll Steps === */
 .feature-item {
@@ -423,6 +432,9 @@ p {
         opacity: 0.95;
         border-radius: 0;
     }
+    .mobile-menu.visible {
+    display: flex;
+    }
     .menu-toggle {
         display: block;
         padding: 18px;
@@ -440,6 +452,9 @@ p {
         max-width: 200px;
         width: 100%;
         word-break: break-word;
+    }
+    .hero-text{
+        margin: 0 auto;
     }
     .hero-text h1 {
         font-size: 2rem;
@@ -474,52 +489,22 @@ p {
         margin-left: auto;
         margin-right: auto;
     }
-
-
     .nav-links {
         display: none;
     }
 
-
     /* impressum, datenschutz, kontakt */
-    body.impressum,
-    body.datenschutz,
-    body.kontakt {
-        margin: 0;
-        padding: 0;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        display: flex;
+    
+    /* Footer immer unten und volle Breite */
+    footer {
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        padding: 1.5rem 2rem;
+        text-align: center;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        box-sizing: border-box;
     }
-.content-container {
-    margin-top: 90%; /* zentriert & nicht zu viel Abstand oben/unten */
-    margin-bottom: 80%;
-    margin-right: 10%;
-    max-width: 600px;
-    width: 90%;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    color: #222;
-    flex: 1;
-}
-
-
-
-/* Footer immer unten und volle Breite */
-footer {
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    box-sizing: border-box;
-}
-
 }
 
 /* === Team Section === */
@@ -635,8 +620,6 @@ body.impressum {
   background-color: #f5f5f7;
   font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
   color: var(--ion-color-dark);
-  margin: 0;
-  padding: 0;
 }
 
 .landingpage-impressum p {
@@ -644,12 +627,6 @@ body.impressum {
     text-align: left;
 }
 
-footer {
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-  padding: 1.5rem 2rem;
-  text-align: center;
-}
 
 
 /* Datenschutz */
@@ -660,14 +637,22 @@ body.datenschutz {
   background-color: #f5f5f7;
   font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
   color: var(--ion-color-dark);
-  margin: 0;
-  padding-top: 5%;
+}
+
+/* Kontakt */
+body.kontakt {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f7;
+  font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
+  color: var(--ion-color-dark);
+  
 }
 
 .content-container {
-    margin-top: 10%; /* zentriert & nicht zu viel Abstand oben/unten */
-    margin-bottom: 20%;
-    margin-left: 10%;
+    margin: 10% auto;
+    margin-left: 6%;
     max-width: 600px;
     width: 90%;
     padding: 2rem;
@@ -679,14 +664,15 @@ body.datenschutz {
     flex: 1;
 }
 
-/* Kontakt */
-body.kontakt {
-  min-height: 100vh;
+.page-wrapper {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f7;
-  font-family: var(--ion-font-family, 'Metropolis'), sans-serif;
-  color: var(--ion-color-dark);
-  margin: 0;
-  padding-top: 5%;
+}
+
+footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 1.5rem 2rem;
+  text-align: center;
 }
