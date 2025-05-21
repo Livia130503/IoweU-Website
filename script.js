@@ -28,11 +28,11 @@ const features = [
 
 // Team Members (Unverändert)
 const teamMembers = [
-    { name: 'Jakob Laschober', role: 'Backend Developer', photo: 'assets/Jakob.jpg' },
-    { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: 'assets/Livia.jpg' },
-    { name: 'Mateusz Osmanski', role: 'Backend & Scrum', photo: 'assets/Mateusz.jpg' },
-    { name: 'Michaela Kopf', role: 'Frontend & Design', photo: 'assets/Michaela.jpg' },
-    { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: 'assets/Sophie.jpg' }
+    { name: 'Jakob Laschober', role: 'Backend Developer', photo: './assets/Jakob.jpg' },
+    { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: './assets/Livia.jpg' },
+    { name: 'Mateusz Osmanski', role: 'Backend & Scrum', photo: './assets/Mateusz.jpg' },
+    { name: 'Michaela Kopf', role: 'Frontend & Design', photo: './assets/Michaela.jpg' },
+    { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: './assets/Sophie.jpg' }
 ];
 
 // Team rendern
@@ -68,7 +68,7 @@ features.forEach((feature, i) => {
 // Bild und Handy Container
 const phoneContainer = document.getElementById('phone-container');
 const screenImg = document.getElementById('screen-img');
-screenImg.src = 'assets/features/feature1.png';  // Setze das Bild von Anfang an
+screenImg.src = './assets/features/feature1.png';  // Setze das Bild von Anfang an
 
 
 // Funktion zum Aktualisieren der Handy-Position und Rotation
@@ -103,8 +103,8 @@ function updateImage(index) {
 
     // Nach 250ms (halb geklappt): Bild wechseln
     setTimeout(() => {
-        screenImg.src = `assets/features/feature${index + 1}.png`;
-    }, 250);
+        screenImg.src = `./assets/features/feature${index + 1}.png`;
+    }, 150);
 
     // Nach 500ms (Flip zu Ende): Flip zurücknehmen + Seite wechseln
     setTimeout(() => {
@@ -117,7 +117,7 @@ function updateImage(index) {
         } else {
             phoneContainer.classList.add('phone-position-left');
         }
-    }, 500);
+    }, 300);
 }
 
 // Scrollama Setup
