@@ -103,7 +103,7 @@ function updateImage(index) {
 
     // Nach 250ms (halb geklappt): Bild wechseln
     setTimeout(() => {
-        screenImg.src = `./assets/features/feature${index + 1}.png`;
+        screenImg.src = `./public/assets/features/feature${index + 1}.png`;
     }, 150);
 
     // Nach 500ms (Flip zu Ende): Flip zurücknehmen + Seite wechseln

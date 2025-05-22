@@ -185,38 +185,20 @@ p {
     margin-top: 1rem;
 }
 
-#phone-container-hero {
-    position: relative;
-    margin-top: 0%;
-    margin-right: 25%;
-    top: auto;
-    transform: rotateY(-20deg) rotateX(45deg) rotateZ(10deg);
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-#hero-phone-frame {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    border-radius: 30px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-#hero-phone-screen {
-    border-radius: 20px;
-    transform: translateZ(20px); /* hebt den Screen hervor */
-}
-
-#hero-phone-frame:hover {
-    transform: rotateY(-10deg) rotateX(5deg);
-    transition: transform 0.5s ease;
-}
 
 
 
@@ -261,8 +243,13 @@ p {
     opacity: 1; /* Sichtbar */
     display: flex; /* Stellt sicher, dass der Inhalt korrekt ausgerichtet ist */
     align-items: center; /* Zentriert den Inhalt vertikal */
-    
 }
+.phone-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease-in-out;
+}
+
 /* Flip-Effekt */
 .phone-frame.flip {
     animation: flip-animation 0.5s ease;
@@ -285,18 +272,16 @@ p {
 .phone-frame {
     width: 250px;
     height: 510px;
-    background-color: #000; /* Rahmenfarbe */
-    border-radius: 30px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    
 }
 
 .phone-screen {
-    width: 90%;         /* kleiner als frame */
-    height: 95%;        /* damit ein sichtbarer Rand bleibt */
+    width: 100%;         /* kleiner als frame */
+    height: 100%;        /* damit ein sichtbarer Rand bleibt */
     border-radius: 20px;
     overflow: hidden;
 }
@@ -440,31 +425,39 @@ p {
         display: block;
         padding: 18px;
     }
-    #phone-container-hero {
-        position: relative;
-        margin-top: 0%;
-        margin-left: 15%;
-    }
-    #phone-container {
-        display: none;
-    }
+  
    
     .title {
         max-width: 200px;
         width: 100%;
         word-break: break-word;
     }
+    .hero {
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+    }
     .hero-text{
         margin: 0 auto;
+        text-align: center;
     }
     .hero-text h1 {
         font-size: 2rem;
     }
-    .phone-frame {
-        width: 180px;
-        height: 360px;
+    .hero-image {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 
+    .hero-image img {
+        width: 100%;
+        height: auto;
+    }
     .features-container {
         width: 95%;
         align-items: center;
