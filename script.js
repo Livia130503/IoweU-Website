@@ -28,11 +28,11 @@ const features = [
 
 // Team Members (Unverändert)
 const teamMembers = [
-    { name: 'Jakob Laschober', role: 'Backend Developer', photo: './assets/Jakob.jpg' },
-    { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: './assets/Livia.jpg' },
-    { name: 'Mateusz Osmanski', role: 'Backend & Scrum', photo: './assets/Mateusz.jpg' },
-    { name: 'Michaela Kopf', role: 'Frontend & Design', photo: './assets/Michaela.jpg' },
-    { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: './assets/Sophie.jpg' }
+    { name: 'Jakob Laschober', role: 'Backend Developer', photo: './public/assets/Jakob.jpg' },
+    { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: './public/assets/Livia.jpg' },
+    { name: 'Mateusz Osmanski', role: 'Backend & Scrum', photo: './public/assets/Mateusz.jpg' },
+    { name: 'Michaela Kopf', role: 'Frontend & Design', photo: './public/assets/Michaela.jpg' },
+    { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: './public/assets/Sophie.jpg' }
 ];
 
 // Team rendern
@@ -68,7 +68,7 @@ features.forEach((feature, i) => {
 // Bild und Handy Container
 const phoneContainer = document.getElementById('phone-container');
 const screenImg = document.getElementById('screen-img');
-screenImg.src = './assets/features/feature1.png';  // Setze das Bild von Anfang an
+screenImg.src = './public/assets/features/feature1.png';  // Setze das Bild von Anfang an
 
 
 // Funktion zum Aktualisieren der Handy-Position und Rotation

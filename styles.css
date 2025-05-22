@@ -271,7 +271,7 @@ p {
 
 .phone-frame {
     width: 250px;
-    height: 510px;
+    height: 800px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -419,7 +419,7 @@ p {
         border-radius: 0;
     }
     .mobile-menu.visible {
-    display: flex;
+        display: flex;
     }
     .menu-toggle {
         display: block;
@@ -457,6 +457,9 @@ p {
     .hero-image img {
         width: 100%;
         height: auto;
+    }
+    .phone-container {
+        display: none !important;
     }
     .features-container {
         width: 95%;
