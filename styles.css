@@ -624,7 +624,17 @@ body.impressum {
     text-align: left;
 }
 
-
+.landingpage-impressum a,
+.content-container a {
+    color: #0070f3;           /* Auffällige Linkfarbe */
+    text-decoration: underline; /* Unterstrichen */
+    word-break: break-all;      /* Lange URLs umbrechen */
+    transition: color 0.2s;
+}
+.landingpage-impressum a:hover,
+.content-container a:hover {
+    color: #0051a8;            /* Dunklere Farbe beim Hover */
+}
 
 /* Datenschutz */
 body.datenschutz {
