@@ -278,12 +278,8 @@ p {
 }
 
 
-
-
-/* === Features Section === */
-
 .feature-section{
-    //background-color: #f6e5ff;
+    background-color: #f6e5ff;
     background: url("/public/assets/feature-hintergrund.png");
     background-size: cover;
 

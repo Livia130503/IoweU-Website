@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
 	<head>
-		<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js"></script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>IoweU Landingpage</title>
-		<script type="module" crossorigin src="/assets/index-DXXxp2b1.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-K_Q0nj9M.css">
+		<link rel="icon" href="/assets/Logo.svg" type="image/png" />
+		<script type="module" crossorigin src="/assets/index-DF0PeR--.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-D5Zg0YT6.css">
 	</head>
+
 	<body>
-		<header class="main-header">
+	<div id="cookie-backdrop" class="cookie-backdrop">
+		<div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-desc">
+			<h3 id="cookie-banner-title">Cookies & Datenschutz</h3>
+			<p id="cookie-banner-desc">
+				Wir verwenden Cookies, um dir die bestmögliche Erfahrung auf unserer Website zu bieten. Mit deiner Zustimmung aktivieren wir anonymes Tracking (z.B. Firebase Analytics), um die Nutzung besser zu verstehen und unsere Services zu verbessern.
+			</p>
+			<div class="cookie-actions">
+				<button id="accept-cookies" aria-label="Cookies akzeptieren">Akzeptieren</button>
+				<button id="decline-cookies" aria-label="Cookies ablehnen">Ablehnen</button>
+			</div>
+			<a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Mehr erfahren</a>
+		</div>
+	</div>
+
+	<header class="main-header">
 			<div class="toolbar">
 				<a href="#" class="logo">
 					<img src="/assets/Logo.svg" alt="IoweU Logo" />
@@ -44,6 +58,7 @@
 
 		<main class="landingpage-content">
 			<section id="introduction" class="hero">
+
 				<div class="hero-text">
 					<h1><img src="/assets/Logo_lang.svg" alt="IoweU Logo" /><br>
 					Deine Ausgaben im Griff</h1>
@@ -57,21 +72,26 @@
 				<div class="hero-image">
 					<img src="/assets/hero-bild.png" alt="App-Screen auf Smartphone" />
 				</div>
+
+
 			</section>
 
-			<section class="features-container" id="features">
-				<h2 class="feature-titel">App-Features</h2>
+			<section class="feature-section" id="features">
+				<div class="features-container">
+					<h2 class="feature-titel">App-Features</h2>
 
-				<div id="phone-container" class="phone-container phone-position-left">
-    					<div class="phone-frame">
-      						<div class="phone-screen">
-        						<img id="screen-img" class="phone-image" alt="App-Screen" />
-      						</div>
-    					</div>
-				</div>
+					<div id="phone-container" class="phone-container phone-position-left">
+							<div class="phone-frame">
+								<div class="phone-screen">
+									<img id="screen-img" class="phone-image" alt="App-Screen" />
+								</div>
+							</div>
 
-				<div class="features-list" id="features-list">
-					<!-- Dynamisch eingefügt -->
+					</div>
+
+					<div class="features-list" id="features-list">
+						<!-- Dynamisch eingefügt -->
+					</div>
 				</div>
 			</section>
 
@@ -85,7 +105,7 @@
 			<section id="cta" class="cta-section">
 				<div class="cta-container">
 					<h2>Bereit, Gruppenfinanzen zu vereinfachen?</h2>
-					<p>Lade die IowU App jetzt herunter und starte noch heute.</p>
+					<p>Lade die IoweU App jetzt herunter und starte noch heute.</p>
 					<div class="app-buttons">
 						<a href="#" class="app-button">
 							<div>Play</div>
@@ -112,7 +132,9 @@
 					</div>
 				</div>
 			</footer>
-		
+
+
+
 
 		<script src="https://unpkg.com/scrollama"></script>
 	</body>
