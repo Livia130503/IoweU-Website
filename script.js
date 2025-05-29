@@ -26,7 +26,7 @@ const features = [
 ];
 
 
-// Team Members (Unverändert)
+// Team Members
 const teamMembers = [
     { name: 'Jakob Laschober', role: 'Backend Developer', photo: '/assets/Jakob.jpg' },
     { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: '/assets/Livia.jpg' },
@@ -35,7 +35,6 @@ const teamMembers = [
     { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: '/assets/Sophie.jpg' }
 ];
 
-// Team rendern
 const teamContainer = document.getElementById("team-container");
 teamMembers.forEach(member => {
     const div = document.createElement("div");
@@ -48,49 +47,35 @@ teamMembers.forEach(member => {
     teamContainer.appendChild(div);
 });
 
-// Features rendern
 const featuresList = document.getElementById('features-list');
 features.forEach((feature, i) => {
     const div = document.createElement('div');
     div.className = 'feature-item step';
     div.dataset.index = i;
-
+    div.dataset.step = i;
     div.innerHTML = `
         <div class="feature-text ${i % 2 === 0 ? 'text-left' : 'text-right'}">
             <h2>${feature.title}</h2>
             <p>${feature.description}</p>
         </div>
     `;
-
     featuresList.appendChild(div);
 });
 
-// Bild und Handy Container
+
 const phoneContainer = document.getElementById('phone-container');
 const screenImg = document.getElementById('screen-img');
-screenImg.src = '/assets/features/feature1.png';  // Setze das Bild von Anfang an
+screenImg.src = '/assets/features/feature1.png';
 
-
-// Funktion zum Aktualisieren der Handy-Position und Rotation
 function updatePhonePosition(index, progress) {
-    const phoneContainer = document.getElementById('phone-container');
-    if (!phoneContainer) return;
-
     const isEven = index % 2 === 0;
-
-    // Ausgangs- und Endpositionen für das Handy
-    const startX = isEven ? -200 : 200; // Startposition (außerhalb des Bildschirms)
-    const endX = 0; // Endposition (zentriert neben dem Text)
-
-    // Berechnung der Position basierend auf dem Fortschritt
+    const startX = isEven ? -200 : 200;
+    const endX = 0;
     const translateX = startX + (endX - startX) * progress;
-
-    // Update der transform-Eigenschaften
     phoneContainer.style.transform = `translateX(${translateX}px)`;
-    phoneContainer.style.opacity = progress; // Sichtbarkeit basierend auf dem Fortschritt
+    phoneContainer.style.opacity = progress;
 }
 
-// Funktion zum Aktualisieren des Bildes und Flip-Effekt
 function updateImage(index) {
     const screenImg = document.getElementById('screen-img');
     const phoneFrame = document.querySelector('.phone-frame');
@@ -98,31 +83,21 @@ function updateImage(index) {
 
     if (!screenImg || !phoneFrame || !phoneContainer) return;
 
-    // Flip starten
     phoneFrame.classList.add('flip');
 
-    // Nach 250ms (halb geklappt): Bild wechseln
     setTimeout(() => {
         screenImg.src = `/assets/features/feature${index + 1}.png`;
     }, 150);
 
-    // Nach 500ms (Flip zu Ende): Flip zurücknehmen + Seite wechseln
     setTimeout(() => {
         phoneFrame.classList.remove('flip');
-
-        // Seite aktualisieren (nach der Animation!)
         phoneContainer.classList.remove('phone-position-left', 'phone-position-right');
-        if (index % 2 === 0) {
-            phoneContainer.classList.add('phone-position-right');
-        } else {
-            phoneContainer.classList.add('phone-position-left');
-        }
+        phoneContainer.classList.add(index % 2 === 0 ? 'phone-position-right' : 'phone-position-left');
     }, 300);
 }
 
-// Scrollama Setup
+// ========== SCROLLAMA ==========
 const scroller = scrollama();
-
 scroller
     .setup({
         step: '.step',
@@ -130,36 +105,21 @@ scroller
         debug: false
     })
     .onStepEnter(({ element, index }) => {
-        // Bild aktualisieren
         updateImage(index);
 
-        // Handy-Position ändern
-        const phoneContainer = document.getElementById('phone-container');
         phoneContainer.classList.remove('phone-position-left', 'phone-position-right');
-        if (index % 2 === 0) {
-            phoneContainer.classList.add('phone-position-right');
-        } else {
-            phoneContainer.classList.add('phone-position-left');
-        }
+        phoneContainer.classList.add(index % 2 === 0 ? 'phone-position-right' : 'phone-position-left');
 
-        // Handy nur ab dem ersten Feature einblenden
         if (index === 0) {
             phoneContainer.style.opacity = '1';
             phoneContainer.style.pointerEvents = 'auto';
         }
 
-
-        // Aktive Klasse setzen
         element.classList.add('is-active');
-
-        // Debugging: Index ausgeben
         console.log(`Aktueller Index: ${index}`);
     })
-
-        .onStepExit(({ element, index, direction }) => {
-        // Handy ausblenden, wenn man über das erste Feature nach oben raus scrollt
+    .onStepExit(({ element, index, direction }) => {
         if (index === 0 && direction === 'up') {
-            const phoneContainer = document.getElementById('phone-container');
             phoneContainer.style.opacity = '0';
             phoneContainer.style.pointerEvents = 'none';
         }
@@ -168,35 +128,36 @@ scroller
 
 
 
-// Burger-Menü Funktionalität immer aktivieren
-        document.addEventListener('DOMContentLoaded', () => {
-		const menuToggle = document.getElementById('menuToggle');
-		const mobileMenu = document.getElementById('mobileMenu');
+// ========== BURGER MENÜ ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-			if (menuToggle && mobileMenu) {
-			// Toggle Menü bei Klick auf den Button
-			menuToggle.addEventListener('click', (event) => {
-				event.stopPropagation(); // Klick nicht weiterreichen
-				mobileMenu.classList.toggle('visible');
-			});
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', (event) => {
+            event.stopPropagation();
+            mobileMenu.classList.toggle('visible');
+        });
 
-			// Schließen bei Klick auf einen Link
-			mobileMenu.querySelectorAll('a').forEach(link => {
-				link.addEventListener('click', () => {
-				mobileMenu.classList.remove('visible');
-				});
-			});
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('visible');
+            });
+        });
 
-			// Schließen bei Klick außerhalb des Menüs
-			document.addEventListener('click', (event) => {
-				const clickedOutside = !mobileMenu.contains(event.target) && !menuToggle.contains(event.target);
-				if (clickedOutside) {
-				mobileMenu.classList.remove('visible');
-				}
-			});
-			}
-		});
+        document.addEventListener('click', (event) => {
+            const clickedOutside = !mobileMenu.contains(event.target) && !menuToggle.contains(event.target);
+            if (clickedOutside) {
+                mobileMenu.classList.remove('visible');
+            }
+        });
+    }
 
+    // Cookie-Banner prüfen
+    handleCookieBanner();
+});
+
+// ========== FIREBASE ==========
 const firebaseConfig = {
     apiKey: "AIzaSyDybxy3EbqWz29usNOGOBqBeRVFAaXY3EU",
     authDomain: "ioweu-landing.firebaseapp.com",
@@ -205,8 +166,92 @@ const firebaseConfig = {
     messagingSenderId: "432758041786",
     appId: "1:432758041786:web:3964ba3665bdcf65abe683",
     measurementId: "G-3MHN7V0HFG"
-  };
-  
-  // Firebase initialisieren
-  const app = firebase.initializeApp(firebaseConfig);
-const analytics = firebase.analytics();
+};
+
+let analytics; // nur wenn akzeptiert
+
+function initFirebaseAnalytics() {
+    // Firebase App SDK laden
+    const appScript = document.createElement('script');
+    appScript.src = 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js';
+    appScript.onload = () => {
+        // Analytics SDK laden
+        const analyticsScript = document.createElement('script');
+        analyticsScript.src = 'https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics-compat.js';
+        analyticsScript.onload = () => {
+            const app = firebase.initializeApp(firebaseConfig);
+            analytics = firebase.analytics();
+        };
+        document.head.appendChild(analyticsScript);
+    };
+    document.head.appendChild(appScript);
+}
+
+
+// ========== COOKIE-BANNER ==========
+
+document.addEventListener('DOMContentLoaded', () => {
+    handleCookieBanner();
+});
+
+function handleCookieBanner() {
+    const banner = document.getElementById('cookie-backdrop');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const declineBtn = document.getElementById('decline-cookies');
+
+    const cookieChoice = localStorage.getItem('cookie-consent');
+
+    // Banner anzeigen, wenn NICHT 'accepted'
+    if (cookieChoice !== 'accepted' && banner) {
+        banner.style.display = 'block';
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.style.display = 'none';
+        initFirebaseAnalytics(); // Tracking aktivieren
+    });
+
+    declineBtn?.addEventListener('click', () => {
+        // Kein Tracking, aber Entscheidung nicht merken – damit Banner wieder kommt
+        banner.style.display = 'none';
+    });
+
+    if (cookieChoice === 'accepted') {
+        initFirebaseAnalytics();
+    }
+}
+
+
+
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+                link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+            });
+        }
+    });
+}, {
+    rootMargin: "-50% 0px -50% 0px", // Bereich mittig im Viewport
+    threshold: 0
+});
+
+document.querySelectorAll("main section[id]").forEach(section => {
+    observer.observe(section);
+});
+
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+    });
+});
+
+

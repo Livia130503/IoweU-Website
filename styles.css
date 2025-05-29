@@ -52,7 +52,7 @@ p {
     right: 0;
     height: 70px;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.70);
     backdrop-filter: saturate(180%) blur(20px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     display: flex;
@@ -65,6 +65,67 @@ p {
     width: 100%;
     padding: 10px 40px; 
 }
+
+.cookie-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0; /* top, right, bottom, left = 0 */
+    background: rgba(0, 0, 0, 0.2); /* dunkler halbtransparenter Hintergrund */
+    backdrop-filter: blur(12px); /* Weichzeichner auf Hintergrund */
+    -webkit-backdrop-filter: blur(5px);
+
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.cookie-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(237, 227, 255, 0.95);
+    border: 2px solid #af37ff;
+    padding: 1.5em 2.5em;
+    text-align: center;
+    font-size: 1em;
+    color: #222;
+    font-weight: 500;
+    z-index: 1100;
+    box-shadow: 0 0 25px rgba(175, 55, 255, 0.3);
+    border-radius: 1rem;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+}
+
+.cookie-banner p {
+    margin: 0;
+    max-width: 600px;
+}
+
+.cookie-banner button {
+    background: #af37ff;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.5em 1.5em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 100px;
+}
+
+.cookie-banner button:hover,
+.cookie-banner button:focus {
+    background: #8a2ecc;
+    outline: none;
+}
+
 
 
 .logo img {
@@ -100,8 +161,16 @@ p {
     transition: color 0.2s ease;
 }
 .nav-links a:hover {
-    color: #007aff;
+    color: #af37ff;
 }
+.nav-links a.active {
+    font-weight: 700; /* fetter */
+    text-decoration: underline; /* unterstrichen */
+    text-underline-offset: 4px; /* optisch schöner */
+    color: #af37ff; /* optional: aktive Farbe anpassen */
+}
+
+
 .profile-placeholder {
     width: 24px;
     height: 24px;
@@ -117,8 +186,8 @@ p {
     height: 30px;
     border-radius: 50px;
     gap: 10px;
-    background: rgb(227, 233, 255);
-    border: 2px solid #007aff;
+    background: rgb(237, 227, 255);
+    border: 2px solid #af37ff;
     padding: 5px 10px 5px 5px;
 }
 
@@ -126,42 +195,50 @@ p {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #007aff;
+    background: #af37ff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     color: var(--ion-color-dark);
     font-size: 18px;
-    border: 1px solid #007aff;
+    border: 1px solid #af37ff;
 }
 
 /* === Hero Section === */
 .hero {
     margin-top: 65px;
     min-height: 100vh;
-    background: linear-gradient(120deg, #007aff 0%, #00c6ff 100%);
+    background: url("/public/assets/hero-hintergrund.png") no-repeat center center;
+    background-size: cover;
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Handy + Text nebeneinander */
-    flex-wrap: wrap; /* Damit’s auf Mobil umbricht */
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 80px 5%;
     gap: 2rem;
+    position: relative;
 }
 
+
+
+/* Frosted Glass Effekt für den Text */
 .hero-text {
     max-width: 600px;
     margin-left: 7%;
     padding: 2rem;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 1rem;
+    border: white 2px solid;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     color: #222;
     flex: 1;
 }
+
 
 .hero-text img {
     margin-bottom: 2rem;
@@ -187,11 +264,12 @@ p {
 
 
 .hero-image {
-  flex: 1;
+  flex: 2;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 .hero-image img {
   max-width: 100%;
@@ -203,6 +281,13 @@ p {
 
 
 /* === Features Section === */
+
+.feature-section{
+    //background-color: #f6e5ff;
+    background: url("/public/assets/feature-hintergrund.png");
+    background-size: cover;
+
+}
 .features-section {
     padding: 120px 5% 100px;
     background-color: #ffffff;
@@ -215,15 +300,16 @@ p {
 .features-container {
     max-width: 1200px;
     width: 60%;
-    margin: 10% auto;
+    margin: auto;
     position: relative;
-    padding-top: 100px; /* Passe den Wert so an, dass das Handy erst mit dem ersten Feature sichtbar wird */
+    padding-top: 100px;
 }
 
 .features-container .feature-titel{
     justify-content: center;
     display: flex;
     align-items: center;
+
 }
 
 .features-list {
@@ -234,6 +320,8 @@ p {
 
 
 /* === Phone === */
+
+
 .phone-container {
     position: sticky;
     top: 20%; /* Positioniert das Handy relativ zum Viewport */
@@ -244,6 +332,8 @@ p {
     display: flex; /* Stellt sicher, dass der Inhalt korrekt ausgerichtet ist */
     align-items: center; /* Zentriert den Inhalt vertikal */
 }
+
+
 .phone-image {
     width: 100%;
     height: auto;
@@ -276,7 +366,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 .phone-screen {
@@ -309,16 +399,18 @@ p {
     max-width: 55%;
     padding: 30px;
     opacity: 0.3;
-    border: 1px solid #ffffff;
     transform: translateY(50px);
     transition: all 0.8s ease;
     z-index: 1;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.47);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 1rem;
+    border: white 2px solid;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     word-break: break-word;
     overflow-wrap: break-word;
-    
+
 }
 
 .feature-text h2 {
@@ -526,8 +618,9 @@ p {
 }
 .team-member img {
     width: 100%;
-    border-radius: 50%;
+    border-radius: 90px;
     margin-bottom: 10px;
+    border: #8a2ecc 3px solid;
 }
 .team-member h3 {
     margin: 0;
@@ -558,7 +651,7 @@ p {
     align-items: center;
     gap: 10px;
     padding: 12px 20px;
-    background-color: #007aff;
+    background-color: #af37ff;
     color: white;
     border-radius: 8px;
     transition: background-color 0.3s ease;
@@ -659,7 +752,6 @@ body.kontakt {
 
 .content-container {
     margin: 10% auto;
-    margin-left: 6%;
     max-width: 900px;
     width: 90%;
     padding: 2rem;
