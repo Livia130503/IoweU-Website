@@ -653,7 +653,7 @@ p {
     transition: background-color 0.3s ease;
 }
 .app-button:hover {
-    background-color: #005ecb;
+    background-color: #9625e1;
 }
 .small-text {
     font-size: 0.75rem;
