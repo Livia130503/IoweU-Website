@@ -28,11 +28,11 @@ const features = [
 
 // Team Members
 const teamMembers = [
-    { name: 'Jakob Laschober', role: 'Backend Developer', photo: '/assets/Jakob.jpg' },
-    { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: '/assets/Livia.jpg' },
-    { name: 'Mateusz Osmanski', role: 'Backend & Scrum', photo: '/assets/Mateusz.jpg' },
-    { name: 'Michaela Kopf', role: 'Frontend & Design', photo: '/assets/Michaela.jpg' },
-    { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: '/assets/Sophie.jpg' }
+    { name: 'Jakob Laschober', role: 'Backend Developer', photo: 'public/assets/Jakob.jpg' },
+    { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: 'public/assets/Livia.jpg' },
+    { name: 'Mateusz Osmanski', role: 'Backend & Scrum', photo: 'public/assets/Mateusz.jpg' },
+    { name: 'Michaela Kopf', role: 'Frontend & Design', photo: 'public/assets/Michaela.jpg' },
+    { name: 'Sophie Plaskacz', role: 'Frontend & Design', photo: 'public/assets/Sophie.jpg' }
 ];
 
 const teamContainer = document.getElementById("team-container");
@@ -65,7 +65,7 @@ features.forEach((feature, i) => {
 
 const phoneContainer = document.getElementById('phone-container');
 const screenImg = document.getElementById('screen-img');
-screenImg.src = '/assets/features/feature1.png';
+screenImg.src = 'public/assets/features/feature1.png';
 
 function updatePhonePosition(index, progress) {
     const isEven = index % 2 === 0;
@@ -86,7 +86,7 @@ function updateImage(index) {
     phoneFrame.classList.add('flip');
 
     setTimeout(() => {
-        screenImg.src = `/assets/features/feature${index + 1}.png`;
+        screenImg.src = `public/assets/features/feature${index + 1}.png`;
     }, 150);
 
     setTimeout(() => {
