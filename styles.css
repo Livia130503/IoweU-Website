@@ -209,7 +209,7 @@ p {
 .hero {
     margin-top: 65px;
     min-height: 100vh;
-    background: url("/public/assets/hero-hintergrund.png") no-repeat center center;
+    background: url("/assets/hero-hintergrund.png") no-repeat center center;
     background-size: cover;
     color: white;
     display: flex;
@@ -285,7 +285,7 @@ p {
 
 .feature-section{
     background-color: #f6e5ff;
-    background: url("/public/assets/feature-hintergrund.png");
+    background: url("/assets/feature-hintergrund.png");
     background-size: cover;
 
 }
