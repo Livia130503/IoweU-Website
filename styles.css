@@ -233,15 +233,20 @@ p {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 1rem;
-    border: white 2px solid;
+    border: white 3px solid;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     color: #222;
     flex: 1;
 }
 
+.hero-text .app-button{
+    margin-top: 20px;
+
+}
+
 
 .hero-text img {
-    margin-bottom: 2rem;
+    width: 50%;
     margin-right: 10%;
 }
 
@@ -649,7 +654,7 @@ p {
     padding: 12px 20px;
     background-color: #af37ff;
     color: white;
-    border-radius: 8px;
+    border-radius: 50px;
     transition: background-color 0.3s ease;
 }
 .app-button:hover {
