@@ -28,7 +28,7 @@ const features = [
 
 // Team Members
 const teamMembers = [
-    { name: 'Jakob Laschober', role: 'Backend Developer', photo: '/assets/Jakob.jpg' },
+    { name: 'Jakob Laschober', role: 'Fullstack Developer', photo: '/assets/Jakob.jpg' },
     { name: 'Livia Hochstöger', role: 'Frontend & Design', photo: '/assets/Livia.jpg' },
     { name: 'Mateusz Osmanski', role: 'Backend & Scrum', photo: '/assets/Mateusz.jpg' },
     { name: 'Michaela Kopf', role: 'Frontend & Design', photo: '/assets/Michaela.jpg' },
